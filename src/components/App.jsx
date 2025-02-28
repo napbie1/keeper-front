@@ -8,7 +8,7 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   const fetchNotes = () => {
-    fetch('/api/notes')
+    fetch('http://ec2-52-221-228-41.ap-southeast-1.compute.amazonaws.com:3000/api/notes')
       .then((response) => response.json())
       .then((data) => setNotes(data))
       .catch((error) => console.error('Error fetching notes:', error)); // Handle fetch errors
@@ -20,7 +20,7 @@ function App() {
   
   // Add a new note
   const addNote = (note) => {
-    fetch('/api/notes', {
+    fetch('http://ec2-52-221-228-41.ap-southeast-1.compute.amazonaws.com:3000/api/notes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ function App() {
 
   // Update a note
 const updateNote = (id, updatedNote) => {
-  fetch(`/api/notes/${id}`, {
+  fetch(`http://ec2-52-221-228-41.ap-southeast-1.compute.amazonaws.com:3000/api/notes/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const updateNote = (id, updatedNote) => {
   // Delete a note
   const deleteNote = (id) => {
     console.log('Deleting note with id:', id); // Debug log
-    fetch(`/api/notes/${id}`, {
+    fetch(`http://ec2-52-221-228-41.ap-southeast-1.compute.amazonaws.com:3000/api/notes/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
