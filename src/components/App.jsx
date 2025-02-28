@@ -35,27 +35,24 @@ function App() {
       .catch((error) => console.error('Error adding note:', error)); // Handle add note errors
   };
 
-
-
   // Update a note
-const updateNote = (id, updatedNote) => {
-  fetch(`http://ec2-52-221-228-41.ap-southeast-1.compute.amazonaws.com:3000/api/notes/${id}`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(updatedNote),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      console.log('Note updated:', data);
-      setNotes((prevNotes) =>
-        prevNotes.map((note) => (note.id === id ? data.note : note))
-      ); // Update the note in the state
+  const updateNote = (id, updatedNote) => {
+    fetch(`http://ec2-52-221-228-41.ap-southeast-1.compute.amazonaws.com:3000/api/notes/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedNote),
     })
-    .catch((error) => console.error('Error updating note:', error)); // Handle update note errors
-};
-
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Note updated:', data);
+        setNotes((prevNotes) =>
+          prevNotes.map((note) => (note.id === id ? data.note : note))
+        ); // Update the note in the state
+      })
+      .catch((error) => console.error('Error updating note:', error)); // Handle update note errors
+  };
 
   // Delete a note
   const deleteNote = (id) => {
@@ -78,7 +75,6 @@ const updateNote = (id, updatedNote) => {
       })
       .catch((error) => console.error('Error deleting note:', error)); // Handle delete note errors
   };
-
 
   return (
     <div>
