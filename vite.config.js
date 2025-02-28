@@ -15,7 +15,7 @@ export default defineConfig({
 
     proxy: {
       '/api': {
-        target: 'http://ec2-52-221-228-41.ap-southeast-1.compute.amazonaws.com',
+        target: 'http://ec2-52-221-228-41.ap-southeast-1.compute.amazonaws.com:3000',
         changeOrigin: true,
         secure: false,
         configure: (proxy, _options) => {
